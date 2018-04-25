@@ -1,0 +1,59 @@
+title: |-
+  Set Android Metat Data
+summary: |
+  Adds, removes or updates <metadata> elements in the AndroidManifest.xml file
+description: |
+  Adds, removes or updates <metadata> elements in the AndroidManifest.xml file
+
+website: https://github.com/rjstelling/bitrise-step-set-android-versionname
+source_code_url: https://github.com/rjstelling/bitrise-step-set-android-versionname
+support_url: https://github.com/rjstelling/bitrise-step-set-android-versionname
+host_os_tags:
+  - osx-10.10
+  - ubuntu-16.04
+
+project_type_tags: ["android"]
+
+type_tags:
+  - utility
+
+is_requires_admin_user: true
+is_always_run: false
+is_skippable: true
+run_if: ""
+
+deps:
+  brew:
+  - name: xmlstarlet
+  apt_get:
+  - name: xmlstarlet
+
+toolkit:
+  bash:
+    entry_file: step.sh
+
+inputs:
+  - android_manifest_path: "app/src/main/AndroidManifest.xml"
+    opts:
+      title: "Android Manifest Path"
+      summary: "The path to the AndroidManifest.xml file"
+      description: |
+        "The path to the AndroidManifest.xml, default app/src/main/AndroidManifest.xml"
+      is_expand: true
+      is_required: true
+  - metadata_name: ""
+    opts:
+      title: "Meta Data Name"
+      summary: "The meta data attribute name"
+      description: |
+        "Value of the meta data element android:name attribute"
+      is_expand: true
+      is_required: true
+  - metadata_value: ""
+    opts:
+      title: "Meta Data Value"
+      summary: "The meta data attribute value"
+      description: |
+        "Value of the meta data element android:value attribute"
+      is_expand: true
+      is_required: true
